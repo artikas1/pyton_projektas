@@ -1,1 +1,3 @@
-
+https://qwsdata.github.io/
+Su data setu padaryt grafine vizualizacija
+Paskaiciuoti Time complexity naudojant genetini sorting algoritma
