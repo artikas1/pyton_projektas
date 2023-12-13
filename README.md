@@ -29,3 +29,8 @@
 ## Format: (10) Service Name						##
 ## Format: (11) WSDL Address						##
 ##########################################################################
+
+How to run:
+1. Run the sorting.py
+2. Run the visualization.py
+Make sure to enter the same index

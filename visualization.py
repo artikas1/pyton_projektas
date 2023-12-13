@@ -1,22 +1,56 @@
 import matplotlib.pyplot as plt
+from sorting import getSortedFieldIndex
+# Function to read the dataset from a text file
+def read_dataset(file_path):
+    with open(file_path, 'r') as file:
+        return file.readlines()
 
-# Read data from the text file
-file_path = 'sorted_dataset.txt'  
-with open(file_path, 'r') as file:
-    lines = file.readlines()
+# Function to visualize the sorted data
+def visualize_sorted_data(sorted_dataset, selected_field_index, selected_field_name):
+    # Extract data for visualization
+    labels = [row.split(',')[0] for row in sorted_dataset]
+    values = [float(row.split(',')[selected_field_index]) for row in sorted_dataset]  # Assuming you want to visualize the second column
 
-# Parse the data
-data = [line.strip().split(',') for line in lines]
+    # Create a bar chart
+    plt.figure(figsize=(10, 6))
+    plt.bar(labels, values, color='blue')
+    plt.xlabel('ID')
+    plt.ylabel(selected_field_name)
+    plt.title('Sorted Data Visualization')
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
 
-# Extract the first and second columns for the bar chart
-x_values = [row[0] for row in data]
-y_values = [row[1] for row in data]
+    # Show the bar chart
+    plt.show()
 
-# Create the bar chart
-plt.bar(range(len(x_values)), y_values, tick_label=x_values)
-plt.xlabel('X-Axis Label')  # Add a label for the x-axis
-plt.ylabel('Y-Axis Label')  # Add a label for the y-axis
-plt.title('Bar Chart of Data Set')  # Add a title for the chart
+# Array of field names
+field_names = [
+    "Response Time",
+    "Availability",
+    "Throughput",
+    "Successability",
+    "Reliability",
+    "Compliance",
+    "Best Practices",
+    "Latency",
+    "Documentation",
+    "WsRF",
+    "Service Classification"
+]
 
-# Display the chart
-plt.show()
+# Prompt user to choose a field for sorting
+print("Choose a field for sorting:")
+for i, field in enumerate(field_names, 1):
+    print(f"{i}. {field}")
+
+selected_field_index = int(input("Enter the index of the field you used for sorting: ")) - 1
+selected_field_name = field_names[selected_field_index]
+
+# Get user input for the file path of the sorted dataset
+file_path = "sorted.txt"
+
+# Read the sorted dataset from the text file
+sorted_dataset = read_dataset(file_path)
+
+# Visualize the sorted data
+visualize_sorted_data(sorted_dataset, selected_field_index, selected_field_name)
