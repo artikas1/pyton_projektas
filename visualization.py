@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from sorting import getSortedFieldIndex
+
 # Function to read the dataset from a text file
 def read_dataset(file_path):
     with open(file_path, 'r') as file:
